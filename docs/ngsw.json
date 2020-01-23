@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1579809805347,
+  "timestamp": 1579810998142,
   "index": "/pwa-test/index.html",
   "assetGroups": [
     {
@@ -49,7 +49,7 @@
     "/pwa-test/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/pwa-test/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/pwa-test/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/pwa-test/index.html": "4ceb5e255f49ddd91278e9b066303afaac58cb4d",
+    "/pwa-test/index.html": "aaf9d73fcf133327af7359e0d2c3650b71c7bf5a",
     "/pwa-test/main-es2015.8e3071036a395d0eeb13.js": "52f3ba943e000fd12b68bc9e04022ec40bae1f20",
     "/pwa-test/main-es5.8e3071036a395d0eeb13.js": "3fe7597409b2cee9d9770ce360c755483ee46e5d",
     "/pwa-test/manifest.webmanifest": "b81808db95e886fedf77f24afce5c4e11464c560",
