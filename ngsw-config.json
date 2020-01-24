@@ -12,6 +12,11 @@
           "/manifest.webmanifest",
           "/*.css",
           "/*.js"
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap",
+          "https://fonts.googleapis.com/icon?family=Material+Icons",
+          "https://fonts.gstatic.com/**"
         ]
       }
     }, {
@@ -23,6 +28,20 @@
           "/assets/**",
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "Todo",
+      "urls": [
+        "https://jsonplaceholder.typicode.com/todos"
+      ],
+      "cacheConfig": {
+        "maxSize": 5,
+        "maxAge": "6h",
+        "timeout": "10s",
+        "strategy": "freshness"
       }
     }
   ]
