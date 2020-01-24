@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1579810998142,
+  "timestamp": 1579843296179,
   "index": "/pwa-test/index.html",
   "assetGroups": [
     {
@@ -10,11 +10,11 @@
       "urls": [
         "/pwa-test/favicon.ico",
         "/pwa-test/index.html",
-        "/pwa-test/main-es2015.8e3071036a395d0eeb13.js",
-        "/pwa-test/main-es5.8e3071036a395d0eeb13.js",
+        "/pwa-test/main-es2015.75a044b5b36c5e79e5bb.js",
+        "/pwa-test/main-es5.75a044b5b36c5e79e5bb.js",
         "/pwa-test/manifest.webmanifest",
         "/pwa-test/polyfills-es2015.2987770fde9daa1d8a2e.js",
-        "/pwa-test/polyfills-es5.6696c533341b95a3d617.js",
+        "/pwa-test/polyfills-es5.ef4b1e1fc703b3ff76e3.js",
         "/pwa-test/runtime-es2015.edb2fcf2778e7bf1d426.js",
         "/pwa-test/runtime-es5.edb2fcf2778e7bf1d426.js",
         "/pwa-test/styles.09e2c710755c8867a460.css"
@@ -49,12 +49,12 @@
     "/pwa-test/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/pwa-test/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/pwa-test/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/pwa-test/index.html": "aaf9d73fcf133327af7359e0d2c3650b71c7bf5a",
-    "/pwa-test/main-es2015.8e3071036a395d0eeb13.js": "52f3ba943e000fd12b68bc9e04022ec40bae1f20",
-    "/pwa-test/main-es5.8e3071036a395d0eeb13.js": "3fe7597409b2cee9d9770ce360c755483ee46e5d",
-    "/pwa-test/manifest.webmanifest": "b81808db95e886fedf77f24afce5c4e11464c560",
+    "/pwa-test/index.html": "cc7f0cd2549bc851872fde198da7ac49e6262207",
+    "/pwa-test/main-es2015.75a044b5b36c5e79e5bb.js": "50b0b465e668b20144e04f871b8cb1f7573ea05c",
+    "/pwa-test/main-es5.75a044b5b36c5e79e5bb.js": "909708d5a72a8d01b0f38437e430730490b10d67",
+    "/pwa-test/manifest.webmanifest": "f0e4cf9359df936e7c85a5411ddb8751f381ef8f",
     "/pwa-test/polyfills-es2015.2987770fde9daa1d8a2e.js": "cf5cbfa9134716054fb479ab21362146cdf1f2ff",
-    "/pwa-test/polyfills-es5.6696c533341b95a3d617.js": "6bff0c03e05bb347d213ad1b3674045eb892d189",
+    "/pwa-test/polyfills-es5.ef4b1e1fc703b3ff76e3.js": "6bff0c03e05bb347d213ad1b3674045eb892d189",
     "/pwa-test/runtime-es2015.edb2fcf2778e7bf1d426.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
     "/pwa-test/runtime-es5.edb2fcf2778e7bf1d426.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
     "/pwa-test/styles.09e2c710755c8867a460.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
