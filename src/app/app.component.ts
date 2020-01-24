@@ -8,13 +8,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
   title = 'pwa-test';
-
+  todos: any[];
   constructor(private http: HttpClient) {
 
   }
 
   ngOnInit(): void {
     this.http.get('https://jsonplaceholder.typicode.com/todos')
-      .subscribe(data => console.log(data));
+      .subscribe((data: any[]) => {
+        console.log(data);
+        this.todos = data;
+      });
   }
 }
