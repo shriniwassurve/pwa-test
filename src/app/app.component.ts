@@ -1,20 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'pwa-test';
-
-  constructor(private http: HttpClient) {
-
-  }
-
-  ngOnInit(): void {
-    this.http.get('https://jsonplaceholder.typicode.com/todos')
-      .subscribe(data => console.log(data));
-  }
 }
