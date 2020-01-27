@@ -7,10 +7,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatIconModule } from '@angular/material';
+import { MatCardModule, MatIconModule, MatDialogModule, MatButtonModule } from '@angular/material';
+import { InstallAppDialogComponent } from './install-app-dialog/install-app-dialog.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InstallAppDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -19,9 +21,12 @@ import { MatCardModule, MatIconModule } from '@angular/material';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [],
+  entryComponents: [InstallAppDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
