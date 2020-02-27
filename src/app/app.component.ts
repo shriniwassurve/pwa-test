@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, HostListener }
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
 import { InstallAppDialogComponent } from './install-app-dialog/install-app-dialog.component';
+import { Subject } from 'rxjs';
+import { take } from 'rxjs/operators'
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,7 @@ export class AppComponent implements OnInit {
   title = 'pwa-test';
   todos: any[];
   deferredPrompt;
+  deferredPromptEvent: Subject<any> = new Subject();
 
   @HostListener('window:beforeinstallprompt', ['$event'])
   onbeforeinstallprompt(e) {
@@ -21,12 +24,17 @@ export class AppComponent implements OnInit {
     e.preventDefault();
     // Stash the event so it can be triggered later.
     this.deferredPrompt = e;
-    this.showInstallPromotion();
+    this.deferredPromptEvent.next(1);
   }
   constructor(private http: HttpClient,
               public dialog: MatDialog) {}
 
   ngOnInit(): void {
+    this.deferredPromptEvent
+    .pipe(take(1))
+    .subscribe(() => {
+      this.showInstallPromotion();
+    });
     this.http.get('https://jsonplaceholder.typicode.com/todos')
       .subscribe((data: any[]) => {
         console.log(data);
