@@ -5,6 +5,7 @@ import { InstallAppDialogComponent } from './install-app-dialog/install-app-dial
 import { Subject } from 'rxjs';
 import { take } from 'rxjs/operators'
 import { SwUpdate } from '@angular/service-worker';
+import { UpdateAvailableComponent } from './update-available/update-available.component';
 
 @Component({
   selector: 'app-root',
@@ -29,13 +30,13 @@ export class AppComponent implements OnInit {
   }
   constructor(private http: HttpClient,
               public dialog: MatDialog,
-              swUpdate: SwUpdate) {
+              private swUpdate: SwUpdate) {
                 console.log('service worker is ', swUpdate.isEnabled);
 
-                swUpdate.available.subscribe(event => {
-                  console.log('update available');
+                this.swUpdate.available.subscribe(() => {
+                  this.askUserToUpdate();
                 });
-                swUpdate.activated.subscribe(event => {
+                this.swUpdate.activated.subscribe(() => {
                   console.log('update is installed');
                 });
               }
@@ -72,6 +73,18 @@ export class AppComponent implements OnInit {
           this.deferredPrompt = null;
           console.log('Deferred  prompt stopped', this.deferredPrompt);
         });
+      }
+    });
+  }
+
+  askUserToUpdate() {
+    const dialogRef = this.dialog.open(UpdateAvailableComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'update') {
+        window.location.reload();
       }
     });
   }

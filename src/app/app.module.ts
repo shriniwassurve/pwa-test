@@ -9,10 +9,12 @@ import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule, MatIconModule, MatDialogModule, MatButtonModule } from '@angular/material';
 import { InstallAppDialogComponent } from './install-app-dialog/install-app-dialog.component';
+import { UpdateAvailableComponent } from './update-available/update-available.component';
 @NgModule({
   declarations: [
     AppComponent,
-    InstallAppDialogComponent
+    InstallAppDialogComponent,
+    UpdateAvailableComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,7 @@ import { InstallAppDialogComponent } from './install-app-dialog/install-app-dial
     MatButtonModule
   ],
   providers: [],
-  entryComponents: [InstallAppDialogComponent],
+  entryComponents: [InstallAppDialogComponent, UpdateAvailableComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
