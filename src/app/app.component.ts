@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material';
 import { InstallAppDialogComponent } from './install-app-dialog/install-app-dialog.component';
 import { Subject } from 'rxjs';
 import { take } from 'rxjs/operators'
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,17 @@ export class AppComponent implements OnInit {
     this.deferredPromptEvent.next(1);
   }
   constructor(private http: HttpClient,
-              public dialog: MatDialog) {}
+              public dialog: MatDialog,
+              swUpdate: SwUpdate) {
+                console.log('service worker is ', swUpdate.isEnabled);
+
+                swUpdate.available.subscribe(event => {
+                  console.log('update available');
+                });
+                swUpdate.activated.subscribe(event => {
+                  console.log('update is installed');
+                });
+              }
 
   ngOnInit(): void {
     this.deferredPromptEvent
