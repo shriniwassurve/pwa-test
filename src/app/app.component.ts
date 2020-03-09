@@ -6,6 +6,7 @@ import { Subject, interval, concat } from 'rxjs';
 import { take, first } from 'rxjs/operators'
 import { SwUpdate } from '@angular/service-worker';
 import { UpdateAvailableComponent } from './update-available/update-available.component';
+import { WebNotificationService } from './web-notification.service';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +33,8 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient,
               public dialog: MatDialog,
               private swUpdate: SwUpdate,
-              private appRef: ApplicationRef) {
+              private appRef: ApplicationRef,
+              private webNotificationService: WebNotificationService) {
                 console.log('service worker is ', swUpdate.isEnabled);
 
                 this.swUpdate.available.subscribe(() => {
@@ -85,6 +87,10 @@ export class AppComponent implements OnInit {
         });
       }
     });
+  }
+
+  subscribeToNotifications() {
+    this.webNotificationService.subscribeToNotification();
   }
 
   askUserToUpdate() {
