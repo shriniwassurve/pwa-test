@@ -1,9 +1,9 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ApplicationRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
 import { InstallAppDialogComponent } from './install-app-dialog/install-app-dialog.component';
-import { Subject } from 'rxjs';
-import { take } from 'rxjs/operators'
+import { Subject, interval, concat } from 'rxjs';
+import { take, first } from 'rxjs/operators'
 import { SwUpdate } from '@angular/service-worker';
 import { UpdateAvailableComponent } from './update-available/update-available.component';
 
@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   todos: any[];
   deferredPrompt;
   deferredPromptEvent: Subject<any> = new Subject();
+  checkUpdateInterval$ = interval(60 * 1000);
 
   @HostListener('window:beforeinstallprompt', ['$event'])
   onbeforeinstallprompt(e) {
@@ -30,15 +31,24 @@ export class AppComponent implements OnInit {
   }
   constructor(private http: HttpClient,
               public dialog: MatDialog,
-              private swUpdate: SwUpdate) {
+              private swUpdate: SwUpdate,
+              private appRef: ApplicationRef) {
                 console.log('service worker is ', swUpdate.isEnabled);
 
                 this.swUpdate.available.subscribe(() => {
                   this.askUserToUpdate();
                 });
-                this.swUpdate.activated.subscribe(() => {
-                  console.log('update is installed');
-                });
+
+
+                if (this.swUpdate.available) {
+                  const appIsStable$ = this.appRef.isStable.pipe(first(isStable => isStable === true));
+                  concat(appIsStable$, this.checkUpdateInterval$)
+                    .subscribe(() => {
+                      this.swUpdate.checkForUpdate()
+                      .then(() => console.log('checking for update'))
+                      .catch(() => console.log('error checking update'));
+                    });
+                }
               }
 
   ngOnInit(): void {
@@ -84,7 +94,11 @@ export class AppComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'update') {
-        window.location.reload();
+        this.swUpdate.activateUpdate()
+          .then(() => {
+            console.log('updated app');
+            window.location.reload();
+          });
       }
     });
   }
